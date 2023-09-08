@@ -1,0 +1,7 @@
+{
+  "markdown-preview-enhanced.revealjsTheme": "black.css",
+  "markdown-preview-enhanced.codeBlockTheme": "monokai.css",
+  "markdown-preview-enhanced.mermaidTheme": "dark",
+  "markdown-preview-enhanced.previewColorScheme": "selectedPreviewTheme",
+  "markdown-preview-enhanced.previewTheme": "solarized-dark.css"
+}
