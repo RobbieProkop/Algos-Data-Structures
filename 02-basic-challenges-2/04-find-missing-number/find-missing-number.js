@@ -12,12 +12,14 @@ function findMissingNumber(arr) {
   // }
   let n = arr.length + 1;
   let expected = (n * (n + 1)) / 2;
-  let actual = 0;
-  arr.forEach((num) => {
-    actual += num;
-  });
-  missing = expected - actual;
-  return missing;
+  // let actual = 0;
+  // arr.forEach((num) => {
+  //   actual += num;
+  // });
+  // missing = expected - actual;
+  // return missing;
+  const actual = arr.reduce((sum, num) => sum + num, 0);
+  return expected - actual;
 }
 
 module.exports = findMissingNumber;
