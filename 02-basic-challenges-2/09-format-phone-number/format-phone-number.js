@@ -27,10 +27,15 @@ function formatPhoneNumber(arr) {
   // return str;
 
   //solution 3
-  const areaCode = arr.slice(0, 3).join("");
-  const first3 = arr.slice(3, 6).join("");
-  const last4 = arr.slice(6, 10).join("");
-  return `(${areaCode}) ${first3}-${last4}`;
+  // const areaCode = arr.slice(0, 3).join("");
+  // const first3 = arr.slice(3, 6).join("");
+  // const last4 = arr.slice(6, 10).join("");
+  // return `(${areaCode}) ${first3}-${last4}`;
+
+  //solution 4
+  return `(${arr.slice(0, 3).join("")}) ${arr.slice(3, 6).join("")}-${arr
+    .slice(6)
+    .join("")}`;
 }
 
 module.exports = formatPhoneNumber;
