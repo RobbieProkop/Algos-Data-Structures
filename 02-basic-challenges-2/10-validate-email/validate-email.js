@@ -3,9 +3,9 @@ function validateEmail(email) {
 
   // if (!email.includes("@") || !email.includes(".")) return false;
   // const first = email.split("@");
-  // const middle = first[1].split(".")[0];
+  // const domain = first[1].split(".")[0];
   // const end = email.split(".")[1];
-  // if (first[0].length < 1 || middle.length < 1 || end.length < 2) return false;
+  // if (first[0].length < 1 || domain.length < 3 || end.length < 2) return false;
 
   // return true;
 
