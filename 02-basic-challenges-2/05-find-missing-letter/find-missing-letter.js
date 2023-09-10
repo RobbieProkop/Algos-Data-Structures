@@ -2,7 +2,7 @@ function findMissingLetter(arr) {
   if (arr.length === 0) return [];
 
   let newArr = [];
-  let missing = [];
+  let missing = [""];
   arr.forEach((letter) => {
     const code = letter.charCodeAt(0);
     newArr.push(code);
@@ -10,7 +10,7 @@ function findMissingLetter(arr) {
   let currentNum = newArr[0];
   newArr.forEach((num) => {
     if (num !== currentNum && num !== currentNum - 1)
-      return missing.push(String.fromCharCode(currentNum));
+      return (missing = [String.fromCharCode(currentNum)]);
     currentNum++;
   });
   return missing[0];
