@@ -9,7 +9,7 @@ function calculateTotalSalesWithTax(products, taxRate) {
     (sum, product) => sum + product.price * product.quantity,
     0
   );
-  return (total * taxRate) / 100 + total;
+  return ((total * taxRate) / 100 + total).toFixed(2);
 }
 
 module.exports = calculateTotalSalesWithTax;
