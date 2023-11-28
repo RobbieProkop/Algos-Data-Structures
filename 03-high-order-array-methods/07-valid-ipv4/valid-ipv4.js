@@ -4,16 +4,8 @@ const isValidIPv4 = (str) => {
   const isValid =
     split.length === 4 &&
     split.every((octet) =>
-      octet < 1
-        ? false
-        : octet > 255
-        ? false
-        : octet.split("")[0] === "0"
-        ? false
-        : true
+      octet < 1 || octet > 255 || octet.split("")[0] === "0" ? false : true
     );
-
-  console.log("isValid :>> ", isValid);
 
   return isValid;
 };
