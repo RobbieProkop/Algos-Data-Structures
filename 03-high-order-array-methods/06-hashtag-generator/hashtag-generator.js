@@ -1,22 +1,24 @@
+// function generateHashtag(str) {
+//   if (str.length > 139) return false;
+//   if (str.trim() === "") return false;
+
+//   let hashed = str
+//     .trim()
+//     .split(/\s+/)
+//     .map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+//   // hashed.splice(0, 0, "#");
+//   return "#" + hashed.join("");
+// }
+
 function generateHashtag(str) {
-  if (str.length > 140) return false;
-  if (str === "") return false;
+  const hashtag = str
+    .split(" ")
+    .reduce(
+      (acc, word) => acc + word.charAt(0).toUpperCase() + word.slice(1),
+      "#"
+    );
 
-  const regex = /\s+/g;
-
-  let hashed = str.replace(regex, " ").trim().split(" ");
-
-  const upper = hashed.map((word) => {
-    let letters = word.split("");
-    letters[0] = letters[0].toUpperCase();
-    letters = letters.join("");
-    return letters;
-  });
-
-  upper.splice(0, 0, "#");
-  hashed = upper.join("");
-
-  return hashed;
+  return hashtag.length > 140 || hashtag.length === 1 ? false : hashtag;
 }
 
 module.exports = generateHashtag;
