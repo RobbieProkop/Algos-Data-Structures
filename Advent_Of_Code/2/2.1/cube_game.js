@@ -10,53 +10,92 @@
 // sum up valid game ids
 // return sum
 
+//Solution 1 - 3 forEach, and 1 reduce
 // const cubeGame = (str) => {
-//   const gamesArr = str.split("\n");
-//   const gameIDs = [];
+//   const inputArr = str.split("\n");
+
 //   const restrictions = {
 //     red: 12,
 //     green: 13,
 //     blue: 14,
 //   };
+//   const validGames = [];
+//   const invalid = [];
+//   inputArr.forEach((game) => {
+//     const split = game.split(":");
+//     const id = split[0].split(" ")[1];
 
-//   const gamesObj = {};
+//     const rounds = split[1];
 
-//   for (let i = 0; i < gamesArr.length - 1; i++) {
-//     const gameID = gamesArr[i].split(":")[0].split(" ")[1];
-//     const subGames = gamesArr[i].split(":")[1].split(";");
-//     subGames.forEach((game) => {
-//       const rounds = game.split(",");
+//     const roundsArr = rounds.split(";");
 
-//       const subObj = {};
-//       rounds.forEach((round, index) => {
-//         const color = round.trim().split(" ")[1];
-//         const val = round.trim().split(" ")[0];
-//         const roundObj = {};
-//         roundObj[color] = val;
-//         subObj[`Round ${index + 1}`] = roundObj;
+//     roundsArr.forEach((round) => {
+//       const colorPair = round.split(",");
+//       const colorObj = {};
+//       colorPair.forEach((color) => {
+//         const trimmed = color.trim().split(" ");
+
+//         colorObj[trimmed[1]] = Number(trimmed[0]);
+
+//         if (colorObj[trimmed[1]] > restrictions[trimmed[1]]) {
+//           return invalid.push(id);
+//         }
 //       });
-//       // gamesObj[`Game ${gameID}`] = subObj;
-
-//       // const split = subGame.split(" ");
-//       // const subKey = split[1];
-//       // const subValue = split[0];
-//       // const subObj = {};
-//       // subGame.forEach((round) => {
-//       //   subObj[subKey] = subValue;
-//       // });
-//       // console.log("subObj :>> ", subObj);
 //     });
-//     console.log("GamesObj :>> ", gamesObj);
-//     const value = {};
-//     // const key = gamesArr[i + 1];
-//     // const value = gamesArr[i];
+//     if (!invalid.includes(id)) {
+//       validGames.push(id);
+//     }
+//   });
 
-//     // gamesObj[key] = value;
-//   }
-//   // console.log("gamesObj :>> ", gamesObj);
-//   // console.log("gameArr :>> ", gamesArr);
+//   console.log("validGames :>> ", validGames);
+//   const sum = validGames.reduce((prev, cur) => Number(prev) + Number(cur), 0);
+//   console.log("sum :>> ", sum);
 // };
 
+// solution 2 - 2 forEach loops and 2 reduce
+// const cubeGame = (str) => {
+//   const inputArr = str.split("\n");
+
+//   const restrictions = {
+//     red: 12,
+//     green: 13,
+//     blue: 14,
+//   };
+//   const validGames = [];
+//   const invalid = [];
+//   inputArr.forEach((game) => {
+//     const [gameNum, rounds] = game.split(":");
+//     const id = gameNum[0].split(" ")[1];
+//     const roundsArr = rounds.split(";");
+//     let isValidGame = true;
+
+//     roundsArr.forEach((round) => {
+//       const colorPair = round.split(",");
+//       const colorObj = colorPair.reduce((obj, color) => {
+//         const [value, colorName] = color.trim().split(" ");
+
+//         obj[colorName] = Number(value);
+
+//         if (obj[colorName] > restrictions[colorName]) {
+//           isValidGame = false;
+//         }
+//         return obj;
+//       }, {});
+//       if (!isValidGame) {
+//         return invalid.push(id);
+//       }
+//     });
+//     if (isValidGame && !invalid.includes(id)) {
+//       validGames.push(id);
+//     }
+//   });
+
+//   console.log("validGames :>> ", validGames);
+//   const sum = validGames.reduce((prev, cur) => Number(prev) + Number(cur), 0);
+//   console.log("sum :>> ", sum);
+// };
+
+// solution 3 - 1 forEach, 2 for of
 const cubeGame = (str) => {
   const inputArr = str.split("\n");
 
@@ -67,35 +106,32 @@ const cubeGame = (str) => {
   };
   const validGames = [];
   const invalid = [];
-  inputArr.forEach((game, index) => {
-    const split = game.split(":");
-    const id = split[0].split(" ")[1];
-
-    const rounds = split[1];
-
+  inputArr.forEach((game) => {
+    const [gameNum, rounds] = game.split(":");
+    const id = gameNum.split(" ")[1];
     const roundsArr = rounds.split(";");
+    let isValidGame = true;
 
-    roundsArr.forEach((round, index) => {
-      const colorPair = round.split(",");
+    for (const round of roundsArr) {
+      const colorPairs = round.split(",");
       const colorObj = {};
-      colorPair.forEach((color) => {
-        const trimmed = color.trim().split(" ");
 
-        colorObj[trimmed[1]] = Number(trimmed[0]);
-
-        if (colorObj[trimmed[1]] > restrictions[trimmed[1]]) {
-          return invalid.push(id);
+      for (const color of colorPairs) {
+        const [value, colorName] = color.trim().split(" ");
+        colorObj[colorName] = Number(value);
+        if (colorObj[colorName] > restrictions[colorName]) {
+          isValidGame = false;
         }
-      });
-    });
-    if (!invalid.includes(id)) {
+      }
+    }
+
+    if (isValidGame && !invalid.includes(id)) {
       validGames.push(id);
     }
   });
-
-  console.log("validGames :>> ", validGames);
   const sum = validGames.reduce((prev, cur) => Number(prev) + Number(cur), 0);
   console.log("sum :>> ", sum);
+  return sum;
 };
 
 module.exports = cubeGame;
