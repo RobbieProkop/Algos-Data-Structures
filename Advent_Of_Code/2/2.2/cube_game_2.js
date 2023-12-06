@@ -1,14 +1,6 @@
-// ✅ Need to take string, and turn it into an array of games
-// ✅get the game id from the games
-// make each id the name for an object of rounds
-// loop through the array of games,
-// assign the game id to each game object
-// make each round an object of colours and values
-// assign each round to the game
-
-// loop throug heach game to see if the game is impossible
-// sum up valid game ids
-// return sum
+//take each game, find fewest number of cubes per possible game
+// multiply fewest cubes per game to find the power
+// sum up the powers
 
 //Solution 1 - 3 forEach, and 1 reduce
 // const cubeGame = (str) => {
@@ -95,40 +87,62 @@
 //   console.log("sum :>> ", sum);
 // };
 
-// solution 3 - 1 forEach, 2 for of
+// solution 1 - 1 forEach, 2 for of
+// const cubeGame = (str) => {
+//   const inputArr = str.split("\n");
+//   const powers = [];
+
+//   inputArr.forEach((game) => {
+//     const [gameNum, rounds] = game.split(":");
+//     const roundsArr = rounds.split(";");
+//     let maxCubes = { red: 0, green: 0, blue: 0 };
+
+//     for (const round of roundsArr) {
+//       const colorPairs = round.split(",");
+//       const colorObj = {};
+
+//       for (const color of colorPairs) {
+//         const [value, colorName] = color.trim().split(" ");
+//         colorObj[colorName] = Number(value);
+//         if (colorObj[colorName] > maxCubes[colorName]) {
+//           maxCubes[colorName] = Number(value);
+//         }
+//       }
+//     }
+
+//     const power = Object.values(maxCubes).reduce((prev, cur) => prev * cur, 1);
+//     powers.push(power);
+//     // }
+//   });
+//   const sum = powers.reduce((prev, cur) => prev + cur, 0);
+//   console.log("sum :>> ", sum);
+//   return sum;
+// };
+
+// solution 2 - 1 forEach, 2 for of, using Math.Max
 const cubeGame = (str) => {
   const inputArr = str.split("\n");
+  const powers = [];
 
-  const restrictions = {
-    red: 12,
-    green: 13,
-    blue: 14,
-  };
-  const validGames = [];
   inputArr.forEach((game) => {
     const [gameNum, rounds] = game.split(":");
-    const id = gameNum.split(" ")[1];
     const roundsArr = rounds.split(";");
-    let isValidGame = true;
+    let maxCubes = { red: 0, green: 0, blue: 0 };
 
     for (const round of roundsArr) {
       const colorPairs = round.split(",");
-      const colorObj = {};
 
       for (const color of colorPairs) {
         const [value, colorName] = color.trim().split(" ");
-        colorObj[colorName] = Number(value);
-        if (colorObj[colorName] > restrictions[colorName]) {
-          isValidGame = false;
-        }
+        numCubes = Number(value);
+        maxCubes[colorName] = Math.max(maxCubes[colorName], numCubes);
       }
     }
 
-    if (isValidGame) {
-      validGames.push(id);
-    }
+    const power = Object.values(maxCubes).reduce((prev, cur) => prev * cur, 1);
+    powers.push(power);
   });
-  const sum = validGames.reduce((prev, cur) => prev + Number(cur), 0);
+  const sum = powers.reduce((prev, cur) => prev + cur, 0);
   console.log("sum :>> ", sum);
   return sum;
 };
