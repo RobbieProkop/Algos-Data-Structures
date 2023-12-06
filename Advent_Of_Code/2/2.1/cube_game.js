@@ -91,7 +91,7 @@
 //   });
 
 //   console.log("validGames :>> ", validGames);
-//   const sum = validGames.reduce((prev, cur) => Number(prev) + Number(cur), 0);
+//   const sum = validGames.reduce((prev, cur) => prev + Number(cur), 0);
 //   console.log("sum :>> ", sum);
 // };
 
@@ -129,7 +129,7 @@ const cubeGame = (str) => {
       validGames.push(id);
     }
   });
-  const sum = validGames.reduce((prev, cur) => Number(prev) + Number(cur), 0);
+  const sum = validGames.reduce((prev, cur) => prev + Number(cur), 0);
   console.log("sum :>> ", sum);
   return sum;
 };
