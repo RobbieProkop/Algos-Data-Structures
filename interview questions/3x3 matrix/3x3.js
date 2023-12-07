@@ -79,9 +79,55 @@
 //   return newArr;
 // };
 
+// const matrix = (arr) => {
+//   console.log("arr :>> ", arr);
+//   let newArr = structuredClone(arr);
+//   const directions = [
+//     [-1, -1],
+//     [-1, 0],
+//     [-1, 1],
+//     [0, -1],
+//     [0, 1],
+//     [1, -1],
+//     [1, 0],
+//     [1, 1],
+//   ];
+
+//   arr.map((subArr, i) => {
+//     let count = 0;
+//     return subArr.map((el, j) => {
+//       if (el === 0) {
+//         directions.forEach(([dx, dy]) => {
+//           const newRow = i + dx;
+//           const newCol = j + dy;
+
+//           if (
+//             newRow >= 0 &&
+//             newRow < arr.length &&
+//             newCol >= 0 &&
+//             newCol < subArr.length
+//           ) {
+//             if (arr[newRow][newCol] === 1) {
+//               count++;
+//               newArr[i][j] = count;
+//             }
+//           }
+//         });
+//       } else {
+//         newArr[i][j] = " ";
+//       }
+//       return count;
+//     });
+//   });
+
+//   console.log("newArr :>> ", newArr);
+//   return newArr;
+// };
+
 const matrix = (arr) => {
   console.log("arr :>> ", arr);
   let newArr = structuredClone(arr);
+
   const directions = [
     [-1, -1],
     [-1, 0],
@@ -92,34 +138,30 @@ const matrix = (arr) => {
     [1, 0],
     [1, 1],
   ];
-
   arr.map((subArr, i) => {
     let count = 0;
     return subArr.map((el, j) => {
       if (el === 0) {
-        directions.forEach(([dx, dy]) => {
-          const newRow = i + dx;
-          const newCol = j + dy;
-
+        directions.forEach(([x, y]) => {
+          const newRow = i + x;
+          const newCol = j + y;
           if (
             newRow >= 0 &&
             newRow < arr.length &&
             newCol >= 0 &&
             newCol < subArr.length
           ) {
-            if (arr[newRow][newCol] === 1) {
-              count++;
-              newArr[i][j] = count;
-            }
+            if (arr[newRow][newCol] === 1) count++;
           }
+          newArr[i][j] = count;
+          return count;
         });
+        console.log("count :>> ", count);
       } else {
         newArr[i][j] = " ";
       }
-      return count;
     });
   });
-
   console.log("newArr :>> ", newArr);
   return newArr;
 };
