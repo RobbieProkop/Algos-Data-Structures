@@ -6,14 +6,14 @@ function countDown(num) {
 
   // base case
   if (num <= 0) {
-    console.log("num :>> ", num);
-    return;
+    console.log("All done!");
+    return "All done!";
   }
 
   //recursion
   console.log("num :>> ", num);
   num--;
-  countDown(num);
+  return countDown(num);
 }
 
 module.exports = countDown;
