@@ -16,7 +16,7 @@ function sumArr(arr) {
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
-const arr2 = Array.from({ length: 10000000 }, (_, index) => index + 1);
+const arr2 = Array.from({ length: 100000000 }, (_, index) => index + 1);
 
 console.time("sum arr 1");
 console.log("sumArr(arr) :>> ", sumArr(arr));

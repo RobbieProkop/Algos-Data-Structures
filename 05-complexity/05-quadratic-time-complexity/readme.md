@@ -30,7 +30,7 @@ Due to the nested loops, the time required to execute the sumArray function incr
 
 We can see this by looking at our chart:
 
-![Quadratic Time Complexity](./images/time-complexity.webp)
+![Quadratic Time Complexity](../../assets/images/time-complexity.webp)
 
 So in general, quadratic time complexity is not very efficient. However, there are some cases where it is the best or the only solution.
 
@@ -50,15 +50,15 @@ function sumArray(arr) {
 }
 
 const arr1 = [1, 2, 3, 4, 5];
-console.time('Sum Array 1');
+console.time("Sum Array 1");
 sumArray(arr1);
-console.timeEnd('Sum Array 1');
+console.timeEnd("Sum Array 1");
 
 const arr2 = Array.from({ length: 10000000 }, (_, index) => index + 1);
 
-console.time('Sum Array 2');
+console.time("Sum Array 2");
 sumArray(arr2);
-console.timeEnd('Sum Array 2');
+console.timeEnd("Sum Array 2");
 ```
 
 You may have to right click in the `Output` in VS Code and select "Stop Code Run" because it will take a long time to run `Sum Array 2`.
