@@ -31,7 +31,7 @@ nameMap.set(5, "Yuli");
 
 console.log("nameMap :>> ", nameMap);
 
-//check values
+//check values -boolean
 
 console.log("nameMap has:>> ", nameMap.has(1));
 console.log("nameMap has:>> ", nameMap.has(10));
