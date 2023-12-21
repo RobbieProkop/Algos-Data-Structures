@@ -2,9 +2,7 @@ function phoneNumberDirectory(arr) {
   const phoneMap = new Map([]);
 
   for (const numberPair of arr) {
-    const name = numberPair.split(":")[0];
-    const number = numberPair.split(":")[1];
-
+    const [name, number] = numberPair.split(":");
     phoneMap.set(name, number);
   }
 
