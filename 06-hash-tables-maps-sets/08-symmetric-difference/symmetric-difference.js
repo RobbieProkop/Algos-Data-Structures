@@ -5,15 +5,11 @@ function symmetricDifference(arr1, arr2) {
   const res = []
 
   for (const num of set1) {
-    if (!arr2.includes(num) && !res.includes(num)) res.push(num)
+    if (!set2.has(num)) res.push(num)
   }
   for (const num of set2) {
-    if (!arr1.includes(num) && !res.includes(num)) res.push(num)
-
+    if (!set1.has(num)) res.push(num)
   }
-
-
-
 
   console.log('res :>> ', res);
   return res
