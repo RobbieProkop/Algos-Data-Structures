@@ -13,10 +13,6 @@ class HashTable {
     for (let i = 0; i < key.length; i++) {
       hash += key.charCodeAt(i);
     }
-    console.log('hash :>> ', hash);
-    console.log('max :>> ', max);
-    console.log('hash % max :>> ', hash % max);
-
     return hash % max;
   }
 
@@ -52,7 +48,19 @@ class HashTable {
         this.storage[index].push([key, value])
       }
     }
+  }
 
+  get(key) {
+    const index = this._hash(key, this.limit);
+    if (this.storage[index] === undefined) {
+      return undefined;
+    }
+
+    for (let i = 0; i < this.storage[index].length; i++) {
+      if (this.storage[index][i][0] === key) {
+        return this.storage[index][i][1];
+      }
+    }
   }
 }
 

@@ -14,6 +14,9 @@ ht.set('Sara', '555-384-9933');
 ht.set('Jill', '555-390-0034');
 // ht.set('Robbie', '123-456-7890');
 
+console.log("get test =>>", ht.get('John'))
+console.log("get test =>>", ht.get('Sara'))
+console.log("get test =>>", ht.get('Undefined'))
 
 
-ht.print()
+// ht.print()
