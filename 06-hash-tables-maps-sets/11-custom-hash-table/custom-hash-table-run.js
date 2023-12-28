@@ -15,8 +15,11 @@ ht.set('Jill', '555-390-0034');
 // ht.set('Robbie', '123-456-7890');
 
 console.log("get test =>>", ht.get('John'))
-console.log("get test =>>", ht.get('Sara'))
-console.log("get test =>>", ht.get('Undefined'))
+
+ht.remove("John")
+
+console.log('Get john after remove:>> ', ht.get('John'));
 
 
-// ht.print()
+
+ht.print()

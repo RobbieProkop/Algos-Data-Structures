@@ -62,6 +62,24 @@ class HashTable {
       }
     }
   }
+
+  remove(key) {
+    const index = this._hash(key, this.limit);
+    //check if the bucket exists
+    if (this.storage[index]) {
+      // if it does exist, let's check if there are no collisions and only 1 key value pair
+      if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {
+        delete this.storage[index]
+      } else {
+        //if not, let's iterate through them to see if the key value is in there. Delete it if it is
+        for (let i = 0; i < this.storage[index].length; i++) {
+          if (this.storage[index][i][0] === key) {
+            delete this.storage[index][i]
+          }
+        }
+      }
+    }
+  }
 }
 
 module.exports = HashTable;
