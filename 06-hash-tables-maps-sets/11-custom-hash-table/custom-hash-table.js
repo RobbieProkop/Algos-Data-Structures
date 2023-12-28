@@ -84,11 +84,20 @@ class HashTable {
   has(key) {
     const index = this._hash(key, this.limit);
     if (this.storage[index]) {
-      return "Key Exists"
-    } else {
-      return "Key does not exist"
+      for (let i = 0; i < this.storage[index].length; i++) {
+        if (this.storage[index][i][0] === key) {
+          return true
+        }
+      }
     }
+    return false
 
+  }
+
+  getValues() {
+    const values = [];
+
+    // for (let i = 0)
   }
 }
 
