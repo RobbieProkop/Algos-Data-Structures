@@ -80,6 +80,16 @@ class HashTable {
       }
     }
   }
+
+  has(key) {
+    const index = this._hash(key, this.limit);
+    if (this.storage[index]) {
+      return "Key Exists"
+    } else {
+      return "Key does not exist"
+    }
+
+  }
 }
 
 module.exports = HashTable;

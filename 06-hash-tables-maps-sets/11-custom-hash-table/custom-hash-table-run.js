@@ -18,8 +18,9 @@ console.log("get test =>>", ht.get('John'))
 
 ht.remove("John")
 
-console.log('Get john after remove:>> ', ht.get('John'));
+// console.log('Get john after remove:>> ', ht.get('John'));
+
+console.log('ht.has("James") :>> ', ht.has("John"));
 
 
-
-ht.print()
+// ht.print()
