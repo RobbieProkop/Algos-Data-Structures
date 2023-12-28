@@ -1,16 +1,19 @@
 const HashTable = require('./custom-hash-table');
 
 
-const myHashTable = new HashTable(8);
+const ht = new HashTable();
 
 
-// const result = myHashTable._hash("Hi There", myHashTable.limit);
+// const result = ht._hash("Hi There", ht.limit);
 
 
 // console.log('result :>> ', result);
-myHashTable.set('john', '555-123-4567');
-// myHashTable.set('Mati', '555-097-7654');
-// myHashTable.set('Yuli', '555-102-9384');
-// myHashTable.set('Robbie', '123-456-7890');
+ht.set('John', '555-234-3544');
+ht.set('James', '555-384-5523');
+ht.set('Sara', '555-384-9933');
+ht.set('Jill', '555-390-0034');
+// ht.set('Robbie', '123-456-7890');
 
-myHashTable.print()
+
+
+ht.print()

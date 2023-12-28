@@ -5,21 +5,29 @@ class HashTable {
     this.limit = limit;
   }
 
+
+
   _hash(key, max) {
     let hash = 0;
 
     for (let i = 0; i < key.length; i++) {
       hash += key.charCodeAt(i);
     }
+    console.log('hash :>> ', hash);
+    console.log('max :>> ', max);
+    console.log('hash % max :>> ', hash % max);
+
     return hash % max;
   }
 
   print() {
     for (let i = 0; i < this.storage.length; i++) {
       if (this.storage[i] !== undefined) {
-        return console.log(`Bucket ${i} :>> `, this.storage[i]);
+        console.log(`Bucket ${i} :>> `, this.storage[i]);
+      } else {
+        console.log(`Bucket ${i} is Empty`);
+
       }
-      console.log(`Bucket ${i} is Empty`);
     }
   }
 
@@ -28,14 +36,14 @@ class HashTable {
 
     // if no index, let's set it
     if (this.storage[index] === undefined) {
-      this.storage[index] = [key, value];
+      this.storage[index] = [[key, value]];
     } else {
       // this else is for collison detection
       let inserted = false
 
-      for (let i = 0; i < this.storage[index]; i++) {
+      for (let i = 0; i < this.storage[index].length; i++) {
         if (this.storage[index][i][0] === key) {
-          this.storage[index][i] = value;
+          this.storage[index][i][1] = value;
           inserted = true;
         }
       }
@@ -45,7 +53,6 @@ class HashTable {
       }
     }
 
-    console.log('storage[index] :>> ', this.storage[index]);
   }
 }
 
