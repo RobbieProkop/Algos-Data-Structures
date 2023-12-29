@@ -5,7 +5,7 @@ class HashTable {
     this.limit = limit;
   }
 
-
+  const
 
   _hash(key, max) {
     let hash = 0;
@@ -84,6 +84,7 @@ class HashTable {
   has(key) {
     const index = this._hash(key, this.limit);
     if (this.storage[index]) {
+      // need to iterate to make sure that the key exists, not just this.storage[index]
       for (let i = 0; i < this.storage[index].length; i++) {
         if (this.storage[index][i][0] === key) {
           return true
@@ -97,7 +98,14 @@ class HashTable {
   getValues() {
     const values = [];
 
-    // for (let i = 0)
+    for (let i = 0; i < this.storage.length; i++) {
+      if (this.storage[i] !== undefined) {
+
+        values.push(this.storage[i][0][1])
+      }
+
+    }
+    return values
   }
 }
 

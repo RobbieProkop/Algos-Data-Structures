@@ -20,7 +20,7 @@ ht.remove("John")
 
 // console.log('Get john after remove:>> ', ht.get('John'));
 
-console.log('ht.has("John") :>> ', ht.has("James"));
+console.log('ht.has("John") :>> ', ht.getValues());
 
 
 // ht.print()
