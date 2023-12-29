@@ -107,6 +107,11 @@ class HashTable {
     }
     return values
   }
+
+  //set storage to empty array
+  clear() {
+    this.storage = [];
+  }
 }
 
 module.exports = HashTable;
