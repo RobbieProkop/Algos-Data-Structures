@@ -1,7 +1,7 @@
 const HashTable = require('./HashTable');
 
 function wordInstanceCounter(str, match) {
-  const lowerArr = str.toLowerCase().split(/\W+/);
+  const lowerArr = str.replace(/[[.,$%^;:-?!*]]/g, "").toLowerCase().split(/\W+/);
   const wordFrequency = new HashTable()
   // if (!wordFrequency.has(match)) return 0;
   const target = match.toLowerCase();
@@ -10,7 +10,7 @@ function wordInstanceCounter(str, match) {
   let count = 0;
   for (const current of lowerArr) {
     if (current === "") continue;
-    if (current === wordFrequency.has(current)) {
+    if (wordFrequency.has(current)) {
       wordFrequency.set(current, wordFrequency.get(current) + 1)
     } else {
       wordFrequency.set(current, 1)
@@ -20,6 +20,7 @@ function wordInstanceCounter(str, match) {
       count = wordFrequency.get(current)
     }
   }
+
   return count
 
   //this is without using the hash
