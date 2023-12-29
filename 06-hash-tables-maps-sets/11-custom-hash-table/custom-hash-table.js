@@ -100,8 +100,10 @@ class HashTable {
 
     for (let i = 0; i < this.storage.length; i++) {
       if (this.storage[i] !== undefined) {
-
-        values.push(this.storage[i][0][1])
+        // need a second loop in case of collisions and multiple arrays in each index i
+        for (let j = 0; j < this.storage[i].length; j++) {
+          values.push(this.storage[i][j][1])
+        }
       }
 
     }
