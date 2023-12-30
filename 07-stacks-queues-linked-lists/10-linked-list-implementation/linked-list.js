@@ -77,7 +77,7 @@ class LinkedList {
     let current = this.head;
 
     while (current !== null) {
-      console.log("current data", current.data)
+      console.log(current.data)
       current = current.next;
     }
   }
