@@ -13,9 +13,7 @@ function balancedParenthesis(str) {
   //   }
 
   // }
-  // if (!stack.isEmpty() || stack.stack.length !== 0) { return false } else {
-  //   return true
-  // }
+  // return stack.isEmpty()
 
 
   // new solution
