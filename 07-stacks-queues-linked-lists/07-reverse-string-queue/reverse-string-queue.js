@@ -8,7 +8,7 @@ const reverseStringWithQueue = (str) => {
     queue.enqueue(noPunc[i]);
   }
   let reversed = "";
-  for (let i = noPunc.length - 1; i >= 0; i--) {
+  while (!queue.isEmpty()) {
     reversed += queue.dequeue();
   }
   return reversed
