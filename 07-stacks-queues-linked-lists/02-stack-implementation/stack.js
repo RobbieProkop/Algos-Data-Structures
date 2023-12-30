@@ -20,7 +20,11 @@ class Stack {
     }
     this.top--;
     return this.stack.pop()
+  }
 
+  peek() {
+    if (this.isEmpty()) return null
+    return this.stack[this.top]
   }
 
   isFull() {

@@ -9,3 +9,4 @@ stack.push(3)
 
 stack.pop()
 console.log('stack :>> ', stack);
+console.log('stack.peek() :>> ', stack.peek());
