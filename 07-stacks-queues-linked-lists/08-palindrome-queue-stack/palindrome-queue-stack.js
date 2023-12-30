@@ -10,12 +10,17 @@ function isPalindromeQueueStack(str) {
     stack.push(newStr[i]);
     queue.enqueue(newStr[i]);
   }
-  for (const letter in newStr) {
-    if (queue.dequeue() === stack.pop()) {
-      continue
-    }
-    return false
+  while (!stack.isEmpty()) {
+    if (queue.dequeue() !== stack.pop()) return false
   }
+
+  //worse time complexity due to a second loop
+  // for (const letter in newStr) {
+  //   if (queue.dequeue() === stack.pop()) {
+  //     continue
+  //   }
+  //   return false
+  // }
 
   return true
 }
