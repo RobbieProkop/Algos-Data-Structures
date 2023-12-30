@@ -8,10 +8,11 @@ function reverseStringStack(str) {
     stack.push(noPunc[i])
   }
   let newString = "";
-  for (let i = 0; i < noPunc.length; i++) {
-    newString += stack.peek()
-    stack.pop()
-
+  // for (let i = 0; i < noPunc.length; i++) {
+  //   newString += stack.pop()
+  // }
+  while (!stack.isEmpty()) {
+    newString += stack.pop()
   }
   return newString
 }
