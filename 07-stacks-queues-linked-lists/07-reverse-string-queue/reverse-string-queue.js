@@ -8,6 +8,7 @@ const reverseStringWithQueue = (str) => {
     queue.enqueue(noPunc[i]);
   }
   let reversed = "";
+  //use a while here instead of a second for loop to reduce the big O from O(n^2) to O(n)
   while (!queue.isEmpty()) {
     reversed += queue.dequeue();
   }
