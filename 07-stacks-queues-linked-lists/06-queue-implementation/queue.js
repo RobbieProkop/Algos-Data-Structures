@@ -18,6 +18,7 @@ class Queue {
     if (this.isEmpty()) return false;
     const value = this.queue[this.head]
     this.head++;
+    //item is still in the array. it is not deleted
     return value
   }
 
