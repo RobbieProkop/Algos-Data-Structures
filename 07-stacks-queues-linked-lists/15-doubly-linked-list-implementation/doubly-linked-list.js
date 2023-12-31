@@ -54,13 +54,62 @@ DoublyLinkedList.prototype.insertAt = function (index, data) {
     current = current.next;
   }
 
-  newNode.prev = current.prev;
+  newNode.prev = current;
   newNode.next = current.next;
   current.next.prev = newNode;
   current.next = newNode;
 
   this.length++;
+}
 
+DoublyLinkedList.prototype.get = function (index) {
+  if (index < 0 || index >= this.length) return null;
+
+  let current = this.head;
+  let i = 0;
+
+  while (i < index) {
+    current = current.next;
+    i++
+  }
+
+  return current
+
+}
+
+DoublyLinkedList.prototype.remove = function (index) {
+  if (index < 0 || index >= this.length) return null;
+
+  //first check if it is the first item
+  if (index === 0) {
+    this.head = this.head.next;
+
+    if (this.head) {
+      this.head.prev = null
+    } else {
+      this.tail = null
+    }
+    //check if last item
+  } else if (index === this.length - 1) {
+    this.tail = this.tail.prev;
+
+    if (this.tail) {
+      this.tail.next = null
+    } else {
+      this.head = null
+    }
+    // everything in the middle
+  } else {
+    let current = this.head;
+    for (let i = 0; i < index; i++) {
+      console.log(`this is i ${i}`)
+      current = current.next;
+    }
+    console.log('current outside :>> ', current.prev.data);
+    current.prev.next = current.next;
+    current.next.prev = current.prev;
+  }
+  this.length--;
 }
 
 DoublyLinkedList.prototype.printAll = function () {

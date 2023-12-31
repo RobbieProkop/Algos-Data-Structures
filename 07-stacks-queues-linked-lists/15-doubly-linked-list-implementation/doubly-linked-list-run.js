@@ -6,8 +6,11 @@ list.append(200)
 list.append(300)
 list.append(400)
 
-list.prepend("hello")
+list.prepend(100)
 list.insertAt(2, "world")
+
+// console.log(list.get(2))
+list.remove(2)
 
 
 list.printAll()
