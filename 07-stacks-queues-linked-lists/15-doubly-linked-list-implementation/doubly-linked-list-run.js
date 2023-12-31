@@ -9,7 +9,7 @@ list.append(400)
 list.prepend(100)
 list.insertAt(2, "world")
 
-// console.log(list.get(2))
+console.log(list.contains(200))
 list.remove(2)
 
 

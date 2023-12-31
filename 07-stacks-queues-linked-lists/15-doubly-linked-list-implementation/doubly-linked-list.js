@@ -102,14 +102,24 @@ DoublyLinkedList.prototype.remove = function (index) {
   } else {
     let current = this.head;
     for (let i = 0; i < index; i++) {
-      console.log(`this is i ${i}`)
       current = current.next;
     }
-    console.log('current outside :>> ', current.prev.data);
+
     current.prev.next = current.next;
     current.next.prev = current.prev;
   }
   this.length--;
+}
+
+DoublyLinkedList.prototype.contains = function (data) {
+  let current = this.head;
+
+  while (current) {
+    if (current.data === data) return true
+    current = current.next
+  }
+
+  return false
 }
 
 DoublyLinkedList.prototype.printAll = function () {
