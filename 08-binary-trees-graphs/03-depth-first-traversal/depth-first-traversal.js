@@ -12,11 +12,13 @@ function depthFirstTraversal(root) {
   if (!root) return [];
 
   let res = []
-  let stack = []
+  // let stack = []
+  let stack = new Stack();
 
   stack.push(root);
 
-  while (stack.length > 0) {
+  // while (stack.length > 0) {
+  while (!stack.isEmpty()) {
     const current = stack.pop();
     res.push(current.data)
 
