@@ -13,5 +13,9 @@ g.addEdge('Tokyo', 'Dallas');
 g.addEdge('Dallas', 'Aspen');
 g.addEdge('Aspen', 'Tokyo');
 
+g.removeEdge('Dallas', 'Aspen')
+g.removeEdge('Tokyo', 'Aspen')
+g.removeVertex('Aspen')
+
 // console.log(g);
 g.printLists()
