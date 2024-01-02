@@ -13,4 +13,5 @@ g.addEdge('Tokyo', 'Dallas');
 g.addEdge('Dallas', 'Aspen');
 g.addEdge('Aspen', 'Tokyo');
 
-console.log(g);
+// console.log(g);
+g.printLists()

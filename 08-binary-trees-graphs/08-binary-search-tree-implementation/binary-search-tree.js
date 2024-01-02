@@ -1,6 +1,6 @@
 class Node {
-  constructor(data) {
-    this.data = data;
+  constructor(value) {
+    this.value = value;
     this.left = null;
     this.right = null;
   }
@@ -11,8 +11,8 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  insert(data) {
-    const newNode = new Node(data);
+  insert(value) {
+    const newNode = new Node(value);
 
     if (this.root === null) {
       this.root = newNode;
@@ -20,14 +20,14 @@ class BinarySearchTree {
       let current = this.root;
 
       while (true) {
-        if (data < current.data) {
+        if (value < current.value) {
           if (!current.left) {
             current.left = newNode
             return this;
           }
           current = current.left;
         }
-        if (data >= current.data) {
+        if (value >= current.value) {
           if (!current.right) {
             current.right = newNode;
             return this;
@@ -38,15 +38,15 @@ class BinarySearchTree {
     }
   }
 
-  lookup(data) {
+  lookup(value) {
     if (!this.root) return null;
     let current = this.root;
-    if (current.data === data) return current;
+    if (current.value === value) return current;
 
     while (current) {
-      if (data < current.data) {
+      if (value < current.value) {
         current = current.left;
-      } else if (data > current.data) {
+      } else if (value > current.value) {
         current = current.right;
       } else {
         return current
@@ -55,20 +55,20 @@ class BinarySearchTree {
     return null
   }
 
-  remove(data) {
-    const removeNode = (node, data) => {
+  remove(value) {
+    const removeNode = (node, value) => {
       if (node === null) return null;
-      if (data < node.data) {
-        node.left = removeNode(node.left, data);
+      if (value < node.value) {
+        node.left = removeNode(node.left, value);
         return node;
-      } else if (data > node.data) {
-        node.right = removeNode(node.right, data)
+      } else if (value > node.value) {
+        node.right = removeNode(node.right, value)
         return node
       } else {
         // Case 1 (0-1 children)
         if (node.left === null) return node.right;
         if (node.right === null) return node.left;
-        if (node.left === null && node.left === null) return null // not sure if i need this.
+        // if (node.left === null && node.left === null) return null // not sure if i need this.
 
         //Case 2 (2 children)
         // find smallest value in the right subtree - successor
@@ -79,12 +79,12 @@ class BinarySearchTree {
 
         //Case 3 - node is the root node, replace with successor
         //assign the node to the smallest found value in right subtree
-        node.data = tempNode.data;
-        node.right = removeNode(node.right, tempNode.data);
+        node.value = tempNode.value;
+        node.right = removeNode(node.right, tempNode.value);
         return node
       }
     }
-    this.root = removeNode(this.root, data)
+    this.root = removeNode(this.root, value)
   }
 
 
@@ -94,7 +94,7 @@ class BinarySearchTree {
     const printNode = (node) => {
       if (node === null) return
       printNode(node.left);
-      console.log(node.data)
+      console.log(node.value)
       printNode(node.right);
     }
     printNode(this.root)

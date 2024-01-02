@@ -13,7 +13,7 @@ function isValidBST(root) {
       node.value <= min) || (max !== null && node.value >= max)) return false
 
     return (
-      isValidSubtree(node.left, min, node.value),
+      isValidSubtree(node.left, min, node.value) &&
       isValidSubtree(node.right, node.value, max))
   }
 
