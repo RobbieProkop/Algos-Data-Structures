@@ -26,7 +26,7 @@ bst.insert(15)
 bst.insert(2)
 
 
-console.log(bst.lookup(2))
 
 bst.remove(5)
+console.log(bst.lookup(10))
 bst.printTree()
